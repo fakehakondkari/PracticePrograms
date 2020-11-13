@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
+  <script src="firebaseapi.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+  <script src="firebasescript.js"></script>
+  <script type="text/javascript">
+   function initApp(){
+   document.getElementById('quickstart-sign-in').addEventListener('click',toggleSignIn,false);
+  }
+   window.onload = function(){
+    initApp();
+  }
+</script>
+</head>
+<body>
+  <p><h3>Login </h3></p>
+	<div class="signInform">
+	<input type="text" name="email" id="email" placeholder="emailid" /><br><br>
+	<input type="password" name="password" id="password" placeholder="password"><br><br>
+	<button id="quickstart-sign-in" name="signin">sign in</button>
+  <a href="firebase.html">register</a>
+   <a href="adminEventsAdd.html">admin</a>
+	</div>
+</body>
+</html>
+

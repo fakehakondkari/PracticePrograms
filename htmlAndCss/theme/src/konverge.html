@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Konverge</title>
+	<script type="text/javascript" src="src/jq.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			font-family: 'Quicksand', sans-serif;
+			text-transform: lowercase;
+			outline: none;
+		}
+
+		a{
+			color: inherit;
+			text-decoration: none;
+		}
+
+		::selection{
+			background: transparent;
+		}
+
+		::-webkit-scrollbar {
+			height: 10vw;
+		    width: 1vh;
+		    display: none;
+		}
+
+		::-webkit-scrollbar-track {
+		    background: rgba(0,0,0,.5);
+		}
+
+		::-webkit-scrollbar-thumb {
+			opacity: 0.5;
+		    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+		    transition: 1s;
+		    border-radius: 0.5vh;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			opacity: 1;
+		    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+
+		.navbar{
+			height: 8vh;
+			line-height: 8vh;
+			width: 100vw;
+			position: fixed;
+			z-index: 10;
+			top: 0;
+			background: linear-gradient(to right, rgb(102,118,153), rgb(95,44,103));
+			color: white;
+			letter-spacing: 0.5vh;
+			transition: 1s;
+		}		
+
+		.navbar:before{
+			content: '';
+			position: absolute;
+			top: 100%;
+			width: 3vh;
+			height: 3vh;
+			border: 0;
+			border-top-left-radius: 2vh;
+			box-shadow: -0.65vh -0.65vh 0.2vh rgb(102,118,153);
+		}
+
+		.navbar:after{
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 100%;
+			width: 3vh;
+			height: 3vh;
+			border: 0;
+			border-top-right-radius: 2vh;
+			box-shadow: 0.65vh -0.65vh 0.2vh rgb(95,44,103);
+		}
+
+		.navbar h1{
+			font-size: 4vh;
+			margin-left: 5vw;
+		}
+
+		.navbar sub{
+			font-size: 2vh;
+			margin-right: 2vw;
+		}
+
+		.search{
+			width: 30vw;
+			height: 4.5vh;
+			background: transparent;
+			position: absolute;
+			top: 2.5vh;
+			left: 50vw;
+			transform: translateX(-50%);
+			border: .5vh solid white;
+			border-radius: 3vh;
+			outline: none;
+			padding: 0 2vw;
+			color: white;
+			font-weight: bold;
+			letter-spacing: 0.5vh;
+		}
+
+		.navbar ul{
+			position: absolute;
+			top: 0;
+			right: 2vw;
+		}
+
+		.navbar ul a li{
+			font-size: 2vh;
+			display: inline;
+			list-style: none;
+			padding: 0 3vh;
+			cursor: default;
+			font-weight: bold;
+		}
+
+		/*---------------------------konverge---------------------------*/	
+
+		.kon{
+			height: 100vh;/*
+			animation: show 5s;*/
+		}
+
+		/*---------------------------kurukshetra---------------------------*/
+
+		.kurukshetra .main{
+			position: relative;
+			height: 100vh;
+		}
+
+		.kurukshetra .logo{
+			position: relative;
+			left: 50vw;
+			top: 45vh;
+			transform: translate(-50%,-50%);
+			height: 50vh;
+			width: 50vh;
+			background-image: url(logo-k.png);
+			background-size: 90%;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.kurukshetra .des{
+			position: relative;			
+			width: 90vw;
+			height: 10vh;
+			margin-top: 20vh;
+			border: 0;
+			border-top-right-radius: 5vh;
+			border-bottom-right-radius: 5vh;
+			background: linear-gradient(to right, rgb(102,118,153), rgb(95,44,103));
+			color: white;
+		}
+
+		.kurukshetra .des h3{
+			margin-left: 5vw;
+		}
+
+		.kurukshetra .des button{
+			position: absolute;
+			top: 1.5vh;
+			right: 2vh;
+			height: 7vh;
+			border: 0.5vh solid white;
+			border-radius: 4vh;
+			background: transparent;
+			color: white;
+			font-weight: bolder;
+			letter-spacing: 0.5vw;
+			padding: 0 5vh;
+			transition: 1s;
+		}
+
+		.kurukshetra .des button:hover{
+			background: white;
+			color: rgb(95,44,103);
+		}
+
+		/*---------------------------rhythms---------------------------*/
+
+		.rhythms{
+			position: relative;
+			width: 100vw;
+		}
+
+		.rhythms .main{
+			position: relative;
+			width: 100vw;
+			height: 100vh;
+		}
+
+		.rhythms .logo{
+			position: relative;
+			left: 50vw;
+			top: 50vh;
+			transform: translate(-50%,-50%);
+			height: 50vh;
+			width: 50vh;
+			background-image: url(logo-r.png);
+			background-size: 70%;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.rhythms .des{
+			position: relative;			
+			width: 90vw;
+			height: 10vh;
+			margin-top: 20vh;
+			border: 0;
+			border-top-right-radius: 5vh;
+			border-bottom-right-radius: 5vh;
+			background: linear-gradient(to right, rgb(102,118,153), rgb(95,44,103));
+			color: white;
+		}
+
+		.rhythms .des h3{
+			margin-left: 5vw;
+		}
+
+		.rhythms .des button{
+			position: absolute;
+			top: 1.5vh;
+			right: 2vh;
+			height: 7vh;
+			border: 0.5vh solid white;
+			border-radius: 4vh;
+			background: transparent;
+			color: white;
+			font-weight: bolder;
+			letter-spacing: 0.5vw;
+			padding: 0 5vh;
+			transition: 1s;
+		}
+
+		.rhythms .des button:hover{
+			background: white;
+			color: rgb(95,44,103);
+		}
+
+		/*---------------------------vectors---------------------------*/
+
+		.vectors{
+			margin-top: 25vh;
+			height: 100vh;
+			width: 100vw;
+			background: linear-gradient(to right, rgb(102,118,153), rgb(95,44,103));
+		}
+
+
+		.vectors .logo{
+			position: relative;
+			z-index: 1;
+			top: 40%;
+			left: 20%;
+			transform: translate(-50%,-50%);
+			height: 10vh;
+			width: 15vh;
+			animation: show 5s;/*
+			background-color: black;*/
+		}
+
+		@keyframes show{
+			0%{
+				filter: blur(2px);
+			}
+			10%{
+				filter: blur(0px);
+			}
+			50%{
+				filter: blur(10px);
+			}
+		}
+
+		.vectors .logo:before,.vectors .logo:after{
+			width: 10vh;
+			height: 30vh;
+			position: absolute;
+			border-radius: 3vh;
+			border: 1vh solid white;
+		}
+
+		.vectors .logo:before{
+			content: '';
+			transform: skew(-30deg);
+			left: 80%;			
+			background: rgba(0,0,0,0.9);
+		}
+
+		.vectors .logo:after{			
+			content: '';
+			transform: skew(30deg);
+			right: 80%;			
+			background: rgba(0,0,0,0.7);
+		}
+
+		#demo{
+			position: absolute;
+			margin-top: 70vh;
+			right: 5vw;
+			font-size: 5vh;
+			font-weight: bolder;
+			letter-spacing: 1vw;
+			color: white;
+		}
+
+		/*---------------------------general---------------------------*/
+
+		.des{
+			top: 10vh;
+			left: -75%;
+			transition: 1s;
+		}
+
+		.card-grid{
+			position: relative;
+			top: 8vh;
+			display: none;
+			transition: 1s;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-gap: 2vh;
+			padding-bottom: 5vh;
+			transition: 1s;
+		}
+
+		.card{
+			width: 25vw;
+			height: 75vh;
+			border: 0;
+			border-radius: 0.5vw;
+			box-shadow: 0 1vh 5vh -1vh black; 
+			margin-bottom: 5vh;
+			background-color: #efefef;
+			background-repeat: no-repeat;
+			overflow: hidden;
+			transition: 1s;
+		}
+
+		.card:nth-child(even){
+			display: none;
+		}
+
+		.slide{
+			left: 0;
+		}
+
+		.show{
+			display: grid;
+		}
+
+		.card img{
+			width: 100%;
+		}
+
+		img {
+		    image-orientation: from-image;
+		}
+
+		.footer{/*
+			min-height: 50vh;*/
+			background: #2f2f2f;
+			color: white;
+			padding-bottom: 5vh;
+		}
+
+		.footer h4{
+			padding-top: 5vh;
+			width: 20vw;
+			padding-bottom: 2vh;
+			border-bottom: 1px solid white;
+		}
+
+		.footer .window{
+			margin-top: 5vh;
+			width: 70vw;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-gap: 1vh;
+			padding-bottom: 5vh;
+		}
+
+		.sponsor{
+			width: 15vw;
+			height: 15vw;
+			background: red;
+		}
+
+		/*---------------------------responsive---------------------------*/
+
+		@media screen and (max-width: 1080px) {
+			.navbar{
+				display: block;
+				height: 12vh;
+			}
+
+			.navbar h1{
+				font-size: 2.5vh;
+				margin-left: 5vw;
+			}
+
+			.navbar sub{
+				font-size: 1vh;
+				margin-right: 2vw;
+			}
+
+			.navbar ul{
+				display: flex;
+				position: relative;
+				left: 0;
+				top: -2.5vh;
+				height: 5vh;
+				line-height: 5vh;
+				width: 100vw;
+			}
+
+			.navbar ul a{
+				flex: 1;
+				padding: 0;
+				text-align: center;
+			}
+
+			.navbar ul a li{
+				font-size: 1.5vh!important;
+			}
+
+			.des{
+				left: -60%;
+			}
+
+			.search{
+				position: absolute;
+				transform: none;
+				height: 3vh;
+				top: 3vh;
+				font-size: 1.5vh;
+				left: 5vw;
+				width: 45vw;
+			}
+
+			.slide{
+				left: 0;
+			}
+
+			.show{
+				display: grid;
+			}
+
+			button{
+				padding: 0 2vh!important;
+				font-size: 2vh;
+			}
+
+			.card-grid{
+				grid-template-columns: 1fr;
+				grid-gap: 2vh;
+			}
+
+			.card{
+				border-radius: 1.5vw;
+				width: 45vh;
+				font-size: 2vh;
+			}
+
+			.card-img{
+				border-radius: 1.5vw!important;
+				width: 45vh!important;
+				height: 45vh!important;
+			}
+
+			.kon object embed{
+				position: absolute;
+				transform: translateY(-50%);
+				margin-top: 50vh;
+			}
+
+			.footer .window{
+				margin-top: 5vh;
+				width: 100vw;
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-gap: 1vh;
+				padding-bottom: 5vh;
+			}
+
+			.sponsor{
+				width: 30vw;
+				height: 30vw;
+				background: red;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="navbar">
+		<h1><a href="#kon">Konverge<sub>2k19</sub></a></h1>
+		<!-- <center><input class="search" type="text" name="search" autocomplete="off" value="search..." onblur="if (this.value==''){this.value='search...';}" onfocus="if (this.value=='search...'){this.value='';}"></center> -->
+		<ul>
+			<a href="#kurukshetra"><li>Kurukshetra</li></a>
+			<a href="#rhythms"><li>Rhythms</li></a>
+			<a href="#vectors"><li>Vectors</li></a>
+		</ul>
+	</div>
+
+	<script>
+		$(document).ready(function(){
+		  // Add smooth scrolling to all links
+		  $("a").on('click', function(event) {
+
+		    // Make sure this.hash has a value before overriding default behavior
+		    if (this.hash !== "") {
+		      // Prevent default anchor click behavior
+		      event.preventDefault();
+
+		      // Store hash
+		      var hash = this.hash;
+
+		      // Using jQuery's animate() method to add smooth page scroll
+		      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+		      $('html, body').animate({
+		        scrollTop: $(hash).offset().top
+		      }, 1000, function(){
+		   
+		        // Add hash (#) to URL when done scrolling (default click behavior)
+		        window.location.hash = hash;
+		      });
+		    } // End if
+		  });
+		});
+	</script>
+
+	<div id="kon" class="kon">
+		<object>
+			<embed src="konverge.svg"></embed>
+		</object>
+	</div>
+
+	<div id="kurukshetra" class="kurukshetra">
+		<div class="main">			
+			<div class="logo"></div>
+			<div class="des">
+				<h3><center><input class="search" type="text" name="search" autocomplete="off" value="search..." onblur="if (this.value==''){this.value='search...';}" onfocus="if (this.value=='search...'){this.value='';}"></center></h3>
+				<button>Explore</button>
+			</div>
+		</div>
+
+		<center><div class="card-grid">
+			<div class="card">
+				<div class="card-img" style="background-image: url(events-r/street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(-90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black; background-position: top;">					
+				</div><!--
+				--><br>
+				<h1>Dance</h1>
+				<h4>Shreyas Rane (Head)</h4>
+				<h5>7738101557</h5>
+				<br>
+				<h4>Sachin Jadhav (Co-Head)</h4>
+				<h5>7208124730</h5>
+			</div>
+
+			<div class="card">
+				<h2>Solo dance</h2>
+				<h2>Group dance</h2>
+				<h2>Street dance</h2>
+				<h2>Flash mob</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Literary Arts</h1>
+				<h4>Manali Shinde (Head)</h4>
+				<h5>9167761047</h5>
+			</div>
+
+			<div class="card">
+				<h2>Debate</h2>
+				<h2>Story Writing</h2>
+				<h2>Poem Recition</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Dramatics</h1>
+				<h4>Datta Dadas (Head)</h4>
+				<h5>9960746791</h5>
+				<br>
+				<h4>Ulkesh Chaugule (Co-Head)</h4>
+				<h5>8424950663</h5>
+			</div>
+
+			<div class="card">
+				<h2>Skit Competition (Curtain call)</h2>
+				<h2>Monoact Competition (Dramebaaz)</h2>
+				<h2>Street play Competition</h2>
+				<h2>Fashion Show</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Singing</h1>
+				<h4>Sumeet Palav (Head)</h4>
+				<h5>9969270962</h5>
+			</div>
+
+			<div class="card">
+				<h2>Solo Singing</h2>
+				<h2>Swarsandhya</h2>
+				<h2>Antakshari</h2>
+				<h2>Acoustics (Band Performance)</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Fine Arts</h1>
+				<h4>Lokita Gharat (Head)</h4>
+				<h5>8652817353</h5>
+				<br>
+				<h4>Prachi Pandey (Co-Head)</h4>
+				<h5>7021826155</h5>
+			</div>
+
+			<div class="card">
+				<h2>Mehndi</h2>
+				<h2>Rangoli</h2>
+				<h2>Nail Art</h2>
+				<h2>Face Painting</h2>
+				<h2>Sketching</h2>
+				<h2>Doodle Drawing</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Miscellaneous</h1>
+				<h4>Dipesh Parab (Head)</h4>
+				<h5>8693831743</h5>
+				<br>
+				<h4>Pramod Chavan (Co-Head)</h4>
+				<h5>8655533772</h5>
+			</div>
+
+			<div class="card">
+				<h2>Lensation</h2>
+				<h2>Treasure Hunt</h2>
+				<h2>Cooking</h2>
+				<h2>Mannequin Challenge</h2>
+			</div>
+
+		</div></center>
+	</div>
+
+	<div id="rhythms" class="rhythms">
+		<div class="main">			
+			<div class="logo"></div>
+			<div class="des">
+				<h3><center><input class="search" type="text" name="search" autocomplete="off" value="search..." onblur="if (this.value==''){this.value='search...';}" onfocus="if (this.value=='search...'){this.value='';}"></center></h3>
+				<button>Explore</button>
+			</div>
+		</div>
+
+		<center><div class="card-grid">
+			<div class="card">
+				<div class="card-img" style="background-image: url(events-r/street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(-90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black; background-position: top;">					
+				</div><!--
+				--><br>
+				<h1>Dance</h1>
+				<h4>Shreyas Rane (Head)</h4>
+				<h5>7738101557</h5>
+				<br>
+				<h4>Sachin Jadhav (Co-Head)</h4>
+				<h5>7208124730</h5>
+			</div>
+
+			<div class="card">
+				<h2>Solo dance</h2>
+				<h2>Group dance</h2>
+				<h2>Street dance</h2>
+				<h2>Flash mob</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Literary Arts</h1>
+				<h4>Manali Shinde (Head)</h4>
+				<h5>9167761047</h5>
+			</div>
+
+			<div class="card">
+				<h2>Debate</h2>
+				<h2>Story Writing</h2>
+				<h2>Poem Recition</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Dramatics</h1>
+				<h4>Datta Dadas (Head)</h4>
+				<h5>9960746791</h5>
+				<br>
+				<h4>Ulkesh Chaugule (Co-Head)</h4>
+				<h5>8424950663</h5>
+			</div>
+
+			<div class="card">
+				<h2>Skit Competition (Curtain call)</h2>
+				<h2>Monoact Competition (Dramebaaz)</h2>
+				<h2>Street play Competition</h2>
+				<h2>Fashion Show</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Singing</h1>
+				<h4>Sumeet Palav (Head)</h4>
+				<h5>9969270962</h5>
+			</div>
+
+			<div class="card">
+				<h2>Solo Singing</h2>
+				<h2>Swarsandhya</h2>
+				<h2>Antakshari</h2>
+				<h2>Acoustics (Band Performance)</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Fine Arts</h1>
+				<h4>Lokita Gharat (Head)</h4>
+				<h5>8652817353</h5>
+				<br>
+				<h4>Prachi Pandey (Co-Head)</h4>
+				<h5>7021826155</h5>
+			</div>
+
+			<div class="card">
+				<h2>Mehndi</h2>
+				<h2>Rangoli</h2>
+				<h2>Nail Art</h2>
+				<h2>Face Painting</h2>
+				<h2>Sketching</h2>
+				<h2>Doodle Drawing</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Miscellaneous</h1>
+				<h4>Dipesh Parab (Head)</h4>
+				<h5>8693831743</h5>
+				<br>
+				<h4>Pramod Chavan (Co-Head)</h4>
+				<h5>8655533772</h5>
+			</div>
+
+			<div class="card">
+				<h2>Lensation</h2>
+				<h2>Treasure Hunt</h2>
+				<h2>Cooking</h2>
+				<h2>Mannequin Challenge</h2>
+			</div>
+
+		</div></center>
+
+	</div>
+
+
+	<div id="vectors" class="vectors">
+		<div class="logo"></div>
+		<p id="demo"></p>
+
+		<script>
+			// Set the date we're counting down to
+			var countDownDate = new Date("Mar 27, 2019 8:00:00").getTime();
+
+			// Update the count down every 1 second
+			var x = setInterval(function() {
+
+			    // Get todays date and time
+			    var now = new Date().getTime();
+			    
+			    // Find the distance between now an the count down date
+			    var distance = countDownDate - now;
+			    
+			    // Time calculations for days, hours, minutes and seconds
+			    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			    
+			    // Output the result in an element with id="demo"
+			    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+			    + minutes + "m " + seconds + "s ";
+			    
+			    // If the count down is over, write some text 
+			    if (distance < 0) {
+			        clearInterval(x);
+			        document.getElementById("demo").innerHTML = "EXPIRED";
+			    }
+			}, 1000);
+		</script>
+
+		<script type="text/javascript">
+			
+			$(document).ready(function() {
+
+				$('.rhythms .des button').click(function(){
+
+					$('.rhythms .des').toggleClass('slide');
+					$('.rhythms .card-grid').toggleClass('show');
+				});	
+
+				$('.kurukshetra .des button').click(function(){
+
+					$('.kurukshetra .des').toggleClass('slide');
+					$('.kurukshetra .card-grid').toggleClass('show');
+				});	
+				
+			});
+
+		</script>
+	</div>
+	<div class="footer">
+		<center><h4>Sponsored by</h4>
+		<div class="window">
+			<div class="sponsor" style="background: url(sponsors/one.png); background-size: cover;"></div>
+			<div class="sponsor" style="background: url(sponsors/two.png); background-size: cover;"></div>
+			<div class="sponsor" style="background: url(sponsors/three.png); background-size: cover;"></div>
+			<div class="sponsor" style="background: url(sponsors/four.png); background-size: cover;"></div>
+			<div class="sponsor" style="background: url(sponsors/five.png); background-size: cover;"></div>
+			<div class="sponsor" style="background: url(sponsors/six.png); background-size: cover;"></div>
+			<div class="sponsor" style="background: url(sponsors/seven.png); background-size: cover;"></div>
+			<div class="sponsor" style="background: url(sponsors/eight.png); background-size: cover;"></div>
+			<div class="sponsor" style="background: url(sponsors/nine.png); background-size: cover;"></div>
+		</div></center>
+	</div>
+</body>
+</html>

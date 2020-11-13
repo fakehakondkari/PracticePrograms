@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dashboard</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+		function myfunction(){
+			var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+            } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+	     function mouseOver() {
+	     	document.getElementById("pop").style.display="block";
+	     }
+
+	</script>
+</head>
+<body>
+    <nav class="menu">
+		<img src="images/logo1.png" alt="ACPCE logo">
+		<div class="heading">
+			<p> Student Dashboard</p>
+		</div>
+	</nav>
+	<hr>
+	<div class="search">
+		<form class="search-form">
+			<input type="text" name="" id="myInput" onkeyup="myfunction()" placeholder="search events here.....">	
+		<!--	<button class="btn" type="submit"><i class="fas fa-search"></i></button>  -->
+		<ul class="logout-btn">
+			<li><a href="#">Logout</a></li>
+			<li><a href="#searchalltype">Details</a></li>
+		</ul>
+		</form>
+	
+	</div>
+   <div class="col-1">
+	<div class="listEvent">
+		<ul id="myUL">
+			<li id="demo" onmouseover="mouseOver()"><a href="#">AEvent 1</a></li>
+			<li id="demo" onmouseover="mouseOver()"><a href="#">BEvent 2</a></li>
+			<li id="demo" onmouseover="mouseOver()"><a href="#">cEvent 3</a></li>
+			<li id="demo" onmouseover="mouseOver()"><a href="#">dEvent 4</a></li>
+			<li id="demo" onmouseover="mouseOver()"><a href="#">Event 5</a></li>
+			<li><a href="#">FEvent 6</a></li>
+			<li><a href="#">gEvent 7</a></li>
+			<li><a href="#">hEvent 8</a></li>
+			<li><a href="#">iEvent 9</a></li>
+			<li><a href="#">iEvent 10</a></li>
+			<li><a href="#">IEvent 11</a></li>
+			<li><a href="#">IEvent 12</a></li>
+			<li><a href="#">JEvent 13</a></li>
+		</ul>
+	</div>
+	</div>
+    
+ <div class="col-2">
+ 	 <div id="pop">
+ 	 	 <ul>
+ 	 	 	<li>view participation</li>
+ 	 	 	<li>view rules of events</li>
+ 	 	 	<li>view date of event</li>
+ 	 	 </ul>
+ 	 </div>
+ </div>
+
+ <div class="outputfiled">
+ 	  <p>fill form as per your requirement</p>
+ 	  <div class="requirement">
+ 	  	 <form>
+ 	  	 	<input type="text" name="" placeholder="search event according to date..." ><i  class="fas fa-chevron-circle-down icon"></i>
+ 	  	 	<input type="text" name="" placeholder="enter according to collage..."><i  class="fas fa-chevron-circle-down icon1"></i>
+ 	  	 	<input type="text" name="" placeholder="search event according to payment..."><i  class="fas fa-chevron-circle-down icon2"></i>
+            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+ 	  	 </form>
+ 	  </div>
+ </div>
+
+ <div class="datashow">
+    <table>
+    	<tbody>
+    		<tr>
+    			<th>event name</th>
+    			<th>student name</th>
+    			<th>Collage name</th>
+    			<th>date and time</th>
+    			<th>payment status</th>
+    		</tr>
+    		<tr>
+    			<td>robo cars race</td>
+    			<td>abcde xyze</td>
+    			<td>ac patil college</td>
+    			<td>23 feb 2019</td>
+    			<td>paid or amount</td>
+    		</tr>
+    		<tr>
+    			<td>remot control car</td>
+    			<td>pamila ghose</td>
+    			<td>bhrati vidyapeeth</td>
+    			<td>22 feb 2019</td>
+    			<td>not paid or amount</td>
+    		</tr>
+
+
+    		
+    	</tbody>
+    </table>
+ </div>
+
+</body>
+</html>
+
+<!--  <i class="fas fa-user" id="img"></i> <i class="far fa-search"></i>  -->

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>welcome</title>
+  <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
+  <script src="firebaseapi.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+  <script src="firebasescript.js"></script>
+  <script type="text/javascript">
+   function initApp(){
+    firebase.auth().onAuthStateChanged(function(user){
+     if(user){
+      var uid=user.UID;
+      var email=user.email;
+      var firstName1=user.firstName;
+      var lastName=user.lastName;
+      var collageName=user.collageName;
+      var number=user.number;
+       document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+       document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+     }else{
+      document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
+     }
+    });
+   document.getElementById('quickstart-sign-out').addEventListener('click',toggleSignOut,true);
+  }
+
+   window.onload = function(){
+    initApp();
+  }
+</script>
+</head>
+<body>
+	<p><h3>Welcome</h3></p>
+<button id="quickstart-sign-out" name="signout">signOut</button>
+
+<div class="quickstart-user-details-container">
+   Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+   <div>Firebase auth <code>currentUser</code> object value:</div>
+   <pre><code id="quickstart-account-details">null</code></pre>
+</div>
+</body>
+</html>

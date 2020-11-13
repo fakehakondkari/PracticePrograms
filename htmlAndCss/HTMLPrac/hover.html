@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+#first:hover
+{
+background-color: red;
+}
+#second:hover
+{
+background-color: red;
+}
+
+</style>
+
+<script type="text/javascript">
+$('#first li').hover(function(){
+     $('.div1', this).show();  //find the div INSIDE this li
+},function(){
+     $('.div1', this).hide();
+});;
+
+</script>
+</head>
+<body>
+
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li id="first"><a href="#news">News</a></li>
+  <li id="second"><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+<div class="div1"   style="Width:200px;height:150px;border:2px solid black;display:none;">asd</div>
+<div class="div2" style="Width:200px;height:50px;border:2px solid black;display:none;">sgtargewarasd</div>
+</body>
+</html>

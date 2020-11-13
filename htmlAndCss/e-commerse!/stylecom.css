@@ -1,0 +1,98 @@
+*{
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+body{
+	font-family:cursive;
+}
+
+
+.nav{
+  padding-left: 2%;
+	font-size: 50px;
+	background-color:#d6e0f5 ;
+  text-shadow: 5px 5px 10px yellow;
+
+
+}
+
+form{
+  
+  top: 50%;
+  left: 50%;
+  max-width: 400px;
+  margin:auto; 
+
+}
+
+
+form.form-search input[type=text]{
+  padding-top: 10px;
+  padding: 5px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: none;
+  background-color: white;
+  border-radius: 10px;
+  transform:translate(-20%,-130%);
+  box-shadow:5px 5px 10px yellow 
+}
+
+form.form-search .btn {
+  float: left;
+  width: 20%;
+  padding: 5px;
+  background:pink;
+  color: white;
+  font-size: 17px;
+  border:none;
+  cursor: pointer;
+  border-radius: 10px;
+  transform:translate(-181%,-137%);
+}
+
+.btn:hover{
+  box-shadow:  0 5px 20px black;
+}
+
+ul{
+  margin-top: 2px;
+  
+}
+
+li{
+  padding: 20px;
+  display: inline-block;
+  margin-top: -80px;
+}
+a{
+  text-decoration: none;
+
+}
+
+
+
+.signup-regist{
+  font-size: 40px;
+  transform: translate(75px,-55px);
+   }
+
+
+.signup:hover{
+   text-shadow: 0 5px 20px pink;
+}
+
+.regist:hover{
+   text-shadow: 0 5px 20px pink;
+}
+
+/*ul li a{
+  float: right;
+  font-size: 30px;
+  display:block;
+  padding: 20px 20px 20px 20px;
+  
+  80s

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Konverge 2k19</title>
+	<script type="text/javascript" src="src/jq.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+
+		body{
+			width: 100vw;
+			font-family: 'Quicksand', sans-serif;
+			overflow-x: hidden;
+			background: linear-gradient(to top, #cfcfcf, #efefef);
+			text-transform: lowercase;
+		}
+
+		::selection{
+			background: transparent!important;
+		}
+
+		::-webkit-scrollbar {
+			height: 10vw;
+		    width: 1vh;
+		    display: none;
+		}
+
+		::-webkit-scrollbar-track {
+		    background: rgba(0,0,0,.5);
+		}
+
+		::-webkit-scrollbar-thumb {
+			opacity: 0.5;
+		    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+		    transition: 1s;
+		    border-radius: 0.5vh;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			opacity: 1;
+		    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+
+		a{
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.main{
+			position: relative;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			transform-style: preserve-3d;
+			perspective: 1000px;
+		}
+
+		.navbar{
+			position: fixed;
+			z-index: 10;
+			width: 100vw;
+			height: 1.5vh;
+			background-color: black;
+		}
+
+		.navbar ul{
+			width: 70vw;
+			height: inherit;
+			line-height: 6vh;
+			display: flex;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			font-size: 1.75vh;
+			font-weight: bolder;
+			letter-spacing: 1vw;
+			border-bottom-right-radius: 1.5vh;
+			border-bottom-left-radius: 1.5vh;
+		}
+
+		.navbar:before{
+			content: '';
+			position: absolute;
+			top: 100%;
+			width: 3vh;
+			height: 3vh;
+			border: 0;
+			border-top-left-radius: 2vh;
+			box-shadow: -0.65vh -0.65vh 0.2vh black;
+		}
+
+		.navbar:after{
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 100%;
+			width: 3vh;
+			height: 3vh;
+			border: 0;
+			border-top-right-radius: 2vh;
+			box-shadow: 0.65vh -0.65vh 0.2vh black;
+		}
+
+		.navbar ul li{
+			transition: 0.5s;
+			text-align: center;
+			text-decoration: none;
+			list-style: none;
+			flex: 1;
+			height: 1vh;
+			mix-blend-mode: screen;
+		}
+
+		li:hover{
+			height: 6vh!important;
+			color: white;
+			background-color: black;
+			border: 0;
+			border-bottom-right-radius: 1.5vh;
+			border-bottom-left-radius: 1.5vh;
+		}
+
+		.one{
+			transition: 1s;
+			position: absolute;
+			top: 20vh;
+			left: 10vw;
+			height: 30vw;
+			width: 30vw;/*
+			background-color: white;*/
+			background-image: url(logo.png);
+			background-size: 80% auto;
+			background-blend-mode: exclusion;
+			background-position: center;
+			background-repeat: no-repeat;
+			border: 0;
+			border-radius: 1vw;
+			/*
+			-webkit-filter: drop-shadow(2px 15px 5px rgba(0,0,0,0.5));*/
+		}
+
+		button{
+			position: absolute;
+			z-index: 1;
+			background: transparent;
+			border: 0;
+			letter-spacing: 0.5vh;
+			word-spacing: 1vh;	
+			transition: 1s;
+			top: 50vh;
+			left: 70%;
+			transform: translate(-50%,-50%);
+			font-size: 2.5vh;
+			line-height: 8vh;
+			color: rgba(0,0,0,0.5);
+			animation: show 5s;
+			border-radius: 0.75vh;
+			padding: 0 5vh;
+		}
+
+		@keyframes show{
+			0%{
+				opacity: 0;
+			}
+			50%{
+				color: rgba(0,0,0,0.8);
+				box-shadow: 0 2vh 5vh -1vh black;
+			}
+		}
+
+		button:hover{
+			background: rgba(0,0,0,1);
+			color: #8f8f8f;
+			box-shadow: 0 2vh 5vh -1vh black;
+		}
+
+		button:focus{
+			outline: 0;
+		}
+
+		.about{
+			height: 20vh;
+			background-color: rgb(50,50,50);
+		}
+
+		.events{
+			padding-top: 5vw;
+			padding-bottom: 10vw;
+			background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+
+		.search{
+			width: 70vw;
+			height: 5vh;
+			margin-bottom: 5vh;
+			border-radius: 3vh;
+			border: 0.5vh solid #4f4f4f;
+			box-shadow:inset 0 .5vw 1.5vw -0.5vw black;
+			background: #4f4f4f;
+		}
+
+		.search input[type="text"]{
+			width: 65vw;
+			height: 5vh;
+			line-height: 5vh;
+			background: transparent;
+			border: 0;
+			position: relative;
+			top: 0;
+			letter-spacing: 0.2vw;
+			left: 0;
+			color: white!important;
+			font-weight: bolder;
+		}
+
+		.card-grid{
+			position: relative;
+			top: 8vh;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-gap: 2vh;
+		}
+
+		.card{
+			width: 25vw;
+			height: 75vh;
+			transition: 0.5s;
+			border: 0;
+			border-radius: 0.5vw;
+			box-shadow: 0 1vh 5vh -1vh black; 
+			margin-bottom: 5vh;
+			background-color: #efefef;
+			background-repeat: no-repeat;
+		}
+
+		.card:nth-child(even){
+			display: none;
+		}
+
+		.card img{
+			width: 100%;
+		}
+
+		img {
+		    image-orientation: from-image;
+		}
+		/*responsive*/
+
+		@media screen and (max-width: 750px) {
+			.one{
+				left: 50vw;
+				top: 40vh;
+				width: 100vw;
+				height: 100vw;
+				transform: translate(-50%,-50%);
+			}
+
+			.card-grid{
+				grid-template-columns: 1fr;
+				grid-gap: 2vh;
+			}
+
+			.card{
+				width: 80vw;
+			}
+
+			.card-img{
+				border-radius: 1vw!important;
+				width: 80vw!important;
+				height: 80vw!important;
+			}
+
+			button{
+				top: 70%;
+				left: 50%;
+			}
+
+			.search{
+				width: 90vw;
+			}
+
+			.search input[type="text"]{
+				width: 85vw;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="main" id="main">
+		<div class="navbar">
+			<ul>
+				<li><a href="#main">Home</a></li>
+				<li><a href="#events">Events</a></li>
+				<li><a href="#main">Team</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="one"></div>
+	<a href="#explore"><button>explore</button></a>
+	<script>
+		$(document).ready(function(){
+		  // Add smooth scrolling to all links
+		  $("a").on('click', function(event) {
+
+		    // Make sure this.hash has a value before overriding default behavior
+		    if (this.hash !== "") {
+		      // Prevent default anchor click behavior
+		      event.preventDefault();
+
+		      // Store hash
+		      var hash = this.hash;
+
+		      // Using jQuery's animate() method to add smooth page scroll
+		      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+		      $('html, body').animate({
+		        scrollTop: $(hash).offset().top
+		      }, 1000, function(){
+		   
+		        // Add hash (#) to URL when done scrolling (default click behavior)
+		        window.location.hash = hash;
+		      });
+		    } // End if
+		  });
+		});
+	</script>
+	<div id="events" class="events">
+		<center><div class="search">
+			<input type="text" name="" placeholder="search here...">
+		</div>
+		<div class="card-grid">
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Dance</h1>
+				<h4>Shreyas Rane (Head)</h4>
+				<h5>7738101557</h5>
+				<br>
+				<h4>Sachin Jadhav (Co-Head)</h4>
+				<h5>7208124730</h5>
+			</div>
+
+			<div class="card">
+				<h2>Solo dance</h2>
+				<h2>Group dance</h2>
+				<h2>Street dance</h2>
+				<h2>Flash mob</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Literary Arts</h1>
+				<h4>Manali Shinde (Head)</h4>
+				<h5>9167761047</h5>
+			</div>
+
+			<div class="card">
+				<h2>Debate</h2>
+				<h2>Story Writing</h2>
+				<h2>Poem Recition</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Dramatics</h1>
+				<h4>Datta Dadas (Head)</h4>
+				<h5>9960746791</h5>
+				<br>
+				<h4>Ulkesh Chaugule (Co-Head)</h4>
+				<h5>8424950663</h5>
+			</div>
+
+			<div class="card">
+				<h2>Skit Competition (Curtain call)</h2>
+				<h2>Monoact Competition (Dramebaaz)</h2>
+				<h2>Street play Competition</h2>
+				<h2>Fashion Show</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Singing</h1>
+				<h4>Sumeet Palav (Head)</h4>
+				<h5>9969270962</h5>
+			</div>
+
+			<div class="card">
+				<h2>Solo Singing</h2>
+				<h2>Swarsandhya</h2>
+				<h2>Antakshari</h2>
+				<h2>Acoustics (Band Performance)</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Fine Arts</h1>
+				<h4>Lokita Gharat (Head)</h4>
+				<h5>8652817353</h5>
+				<br>
+				<h4>Prachi Pandey (Co-Head)</h4>
+				<h5>7021826155</h5>
+			</div>
+
+			<div class="card">
+				<h2>Mehndi</h2>
+				<h2>Rangoli</h2>
+				<h2>Nail Art</h2>
+				<h2>Face Painting</h2>
+				<h2>Sketching</h2>
+				<h2>Doodle Drawing</h2>
+			</div>
+
+			<div class="card">
+				<div class="card-img" style="background-image: url(street-dance.jpg); background-size: cover; display: block; width: 25vw; height: 25vw; transform: rotateZ(90deg); border-radius: 0.5vw; box-shadow: 0 1vh 5vh -1vh black;">					
+				</div><!--
+				--><br>
+				<h1>Miscellaneous</h1>
+				<h4>Dipesh Parab (Head)</h4>
+				<h5>8693831743</h5>
+				<br>
+				<h4>Pramod Chavan (Co-Head)</h4>
+				<h5>8655533772</h5>
+			</div>
+
+			<div class="card">
+				<h2>Lensation</h2>
+				<h2>Treasure Hunt</h2>
+				<h2>Cooking</h2>
+				<h2>Mannequin Challenge</h2>
+			</div>
+
+		</div>
+	</div></center>
+</body>
+</html>

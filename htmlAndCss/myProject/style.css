@@ -1,0 +1,161 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0
+}
+
+nav{
+ height: 90px;
+}
+
+.menu{
+	background-color: #142b47;
+	text-align: center;
+
+}
+
+nav .logo{
+	align-content: center;
+	padding-top: 10px; 
+	width: 10%;
+}
+
+.secnav{
+    padding-top: 20px;
+	background-color: orange;
+	height: 70px;
+	width: 100%;
+	
+}
+.tab{
+	padding-top: -10%;
+	padding-left:17%;
+}
+
+.tab>li{
+    align-content: center;
+	padding-left: 3px;
+	width: 33%;
+	float: left;
+	list-style: none;
+	padding-top: 10px;
+}
+ 
+ a{
+ 	padding: 13px 15px 9px 10px;
+ 	text-decoration: none!important;
+ 	font-size: 20px;
+ 	font-weight: bold;
+ 	color: #142b47;
+
+ }
+
+ a:hover{
+ 	 text-shadow: 5px 5px 5px #142b47;
+    
+ }
+
+.thumb{
+	width: 100%;
+}
+.thumb>div{
+	float: left;
+	width: 25%;
+
+}
+.thumbnail{
+	position: relative;
+	margin-top: 3%;
+	margin-left: 6%;
+}
+
+.thumbnail>button{
+	margin: 2%;
+	
+	padding: 10px 10px 10px 0;
+	font-size: 20px;
+	color: #142b47;
+	font-weight: bold;
+	border-style: none;
+}
+
+.btn-primary {
+   background-color: orange;
+	width: 95%;
+	align-content: center;
+}
+
+.dropdown{
+	position: relative;
+	
+}
+
+.dropdown-content{
+	display: none;
+	position: absolute;
+	background-color:  #9fff80;
+	min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 9;
+    border-radius: 10px;
+    border-color: #142b47;
+    text-decoration: none;
+    list-style: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dropdown:hover .dropdown-content{
+	display: block;
+}
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.slider{
+	float: right;
+	border: 2px solid black;
+	width:60%;
+	height: 60%;
+}
+
+
+
+

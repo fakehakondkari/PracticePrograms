@@ -1,0 +1,68 @@
+<!--Make a form with six fields: name, e-mail, password, contact, city and address and a submit button. 
+Note: Do not test your code here. Instead use netbeans. The bootstrap code output may not be legible in the small window here.-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+        <!--jQuery library--> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!--Latest compiled and minified JavaScript--> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Forms in Bootstrap</title>
+        <style>
+            .row-style{
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div >
+                    <!--Enter your code here-->
+                    <div class="col-xs-6 col-xs-offset-3">
+                        
+                        <div class="panel panel-primary">
+                             
+                            <div class="panel-heading">
+                                <h1>Form Styling</h1>
+                                 </div>
+                     <form>
+                        
+                        <div class="form-group row-style">
+                            <input type="text"  class="form-control" name="firstname"  placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text"  class="form-control" name="lastname" placeholder="Last Name" >
+                        </div>
+                         
+                          <div class="form-group">
+                            <input type="text"  class="form-control" name="email" placeholder="Email-id" >
+                        </div>
+                         
+                         <div class="form-group">
+                            <input type="text"  class="form-control" name="password" placeholder="Password" >
+                        </div>
+                         
+                         <div class="form-group">
+                            <input type="text"  class="form-control" name="contact" placeholder="Contact" >
+                        </div>
+                         
+                         <div class="form-group">
+                            <input type="text"  class="form-control" name="contact" placeholder="Address" >
+                        </div>
+                         
+                         <div class="form-group">
+                             <center>   <button type="submit" class="btn btn-primary" style="padding:10px,50px,10px,50px;">Submit</button></center>
+                        </div>
+                     </form>
+                            <div class="panel-footer">
+                                <center>don't have a account?<a href="#">Click here to sign in</a></center>
+                            </div>    
+                        </div>
+                    </div> 
+            </div>
+        </div>
+    </body>
+</html>

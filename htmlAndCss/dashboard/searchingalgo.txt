@@ -1,0 +1,30 @@
+<script type="text/javascript">
+
+			var searchk = document.forms['search'].querySelector('input');
+
+			searchk.addEventListener('keyup', function(e){
+
+				const term = e.target.value.toLowerCase();
+
+				const card = document.getElementsByClassName("card");
+
+				Array.from(card).forEach(function(found){
+
+					const title = found.textContent;
+
+					if (title.toLowerCase().indexOf(term)!=-1) {
+
+						found.style.display = "";
+					}
+
+					else {
+
+						found.style.display = "none";
+
+					}
+
+				});
+
+			});
+
+		</script>

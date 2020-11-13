@@ -1,0 +1,137 @@
+
+  var databaseCon=firebase.database().ref('users');
+  var databaseEvent=firebase.database().ref('events');
+
+
+  function toggleSignIn() {
+    if(firebase.auth().currentUser){
+      firebase.auth().signOut();
+    }else{
+     var email=document.getElementById('email').value;
+     var password=document.getElementById('password').value;
+     if(email.length<4){
+     	alert('please enter an email address.');
+     	return;
+     }
+     if(password.length<4){
+     	alert('please enter a password.');
+     	return;
+     }
+     firebase.auth().signInWithEmailAndPassword(email,password).then(function(){
+     	window.location ="afterlogin.html";
+     }).catch(function(error){
+       var errorCode=error.code;
+       var errorMessage=error.message;
+       if(errorCode === 'auth/wrong-password'){
+       	alert('wrong password.');
+       }else{
+       	alert(errorMessage);
+       }
+       console.log(error);
+     });
+	}
+}
+
+  function handleSignUp(){
+    var email=document.getElementById('email').value;
+    var firstName=document.getElementById('firstName').value;
+    var lastName=document.getElementById('lastName').value;
+    var collageName=document.getElementById('collageName').value;
+    var number=document.getElementById('number').value;
+    var password=document.getElementById('password').value;
+    var password1=document.getElementById('password1').value;
+    if(email.length<4){
+      alert('please enter an email address.');
+      return;
+    }
+    if(password.length<4){
+     alert('please enter a valid password.') ;
+     return;
+    }
+
+    if(password!=password1){
+      alert('password field entry does not match');
+      return;
+    }
+
+
+    firebase.auth().createUserWithEmailAndPassword(email,password).then(function(){
+      datasave(email,firstName,lastName,collageName,number);
+      alert('email password data entered into database');
+    // document.getElementById('')
+    }).catch(function(error){
+
+      var errorCode=error.code;
+      var errorMessage=error.message;
+     
+      if(errorCode=='auth/weak-password'){
+        alert('the password id too weak.');
+      }else{
+        alert(errorMessage);
+      }
+      console.log(error); 
+    });
+  }
+
+  function initApp() {
+    firebase.auth().onAuthStateChanged(function(user){
+     if(user){
+      var uid=user.UID;
+      var email=user.email;
+      var firstName=user.firstName;
+      var lastName=user.lastName;
+      var collageName=user.collageName;
+      var number=user.number;
+       document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+     }
+    });
+  }
+
+
+  function datasave(email,firstName,lastName,collageName,number){
+    var newdatasave=databaseCon.push();
+    newdatasave.set({
+      email:email,
+      firstName:firstName,
+      lastName:lastName,
+      collageName:collageName,
+      number:number    
+    });
+  }
+ function toggleSignOut() {
+ 	firebase.auth().signOut().then(function(){
+      window.location="redirectbuttons.html";
+    }).catch(function(error){
+       //
+    });
+     console.log(error);
+ }
+
+ 
+function handleAddEvent(){
+  var counter=0;
+  var eventName=document.getElementById('eventName').value;
+  var eventFees=document.getElementById('eventFees').value;
+  var eventPrize=document.getElementById('eventPrize').value;
+  var description=document.getElementById('description').value;
+  var eventType=document.getElementById('eventType').value;
+ 
+  if(eventName==''){
+    alert('enter event');
+    return;
+  }
+  eventsave(counter,eventName,eventFees,eventPrize,description,eventType);
+  alert('event entered into database');
+}
+
+function eventsave(counter,eventName,eventFees,eventPrize,description,eventType){
+  var neweventsave=databaseEvent.push();
+  counter=counter+1;
+  neweventsave.set({
+    counter:counter,
+    eventName:eventName,
+    eventPrize:eventPrize,
+    description:description,
+    eventType:eventType
+  });
+}
